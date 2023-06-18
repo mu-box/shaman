@@ -4,8 +4,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/nanopack/shaman/cache"
-	"github.com/nanopack/shaman/config"
+	"github.com/mu-box/shaman/cache"
+	"github.com/mu-box/shaman/config"
 )
 
 // test scribble cache init
@@ -26,7 +26,7 @@ func TestScribbleInitialize(t *testing.T) {
 // test scribble cache addRecord
 func TestScribbleAddRecord(t *testing.T) {
 	scribbleReset()
-	err := cache.AddRecord(&nanopack)
+	err := cache.AddRecord(&micropack)
 	if err != nil {
 		t.Errorf("Failed to add record to scribble cacher - %v", err)
 	}
@@ -35,9 +35,9 @@ func TestScribbleAddRecord(t *testing.T) {
 // test scribble cache getRecord
 func TestScribbleGetRecord(t *testing.T) {
 	scribbleReset()
-	cache.AddRecord(&nanopack)
-	_, err := cache.GetRecord("nanobox.io")
-	_, err2 := cache.GetRecord("nanopack.io")
+	cache.AddRecord(&micropack)
+	_, err := cache.GetRecord("microbox.cloud")
+	_, err2 := cache.GetRecord("microbox.cloud")
 	if err == nil || err2 != nil {
 		t.Errorf("Failed to get record from scribble cacher - %v%v", err, err2)
 	}
@@ -46,8 +46,8 @@ func TestScribbleGetRecord(t *testing.T) {
 // test scribble cache updateRecord
 func TestScribbleUpdateRecord(t *testing.T) {
 	scribbleReset()
-	err := cache.UpdateRecord("nanobox.io", &nanopack)
-	err2 := cache.UpdateRecord("nanopack.io", &nanopack)
+	err := cache.UpdateRecord("microbox.cloud", &micropack)
+	err2 := cache.UpdateRecord("microbox.cloud", &micropack)
 	if err != nil || err2 != nil {
 		t.Errorf("Failed to update record in scribble cacher - %v%v", err, err2)
 	}
@@ -56,9 +56,9 @@ func TestScribbleUpdateRecord(t *testing.T) {
 // test scribble cache deleteRecord
 func TestScribbleDeleteRecord(t *testing.T) {
 	scribbleReset()
-	err := cache.DeleteRecord("nanobox.io")
-	cache.AddRecord(&nanopack)
-	err2 := cache.DeleteRecord("nanopack.io")
+	err := cache.DeleteRecord("microbox.cloud")
+	cache.AddRecord(&micropack)
+	err2 := cache.DeleteRecord("microbox.cloud")
 	if err != nil || err2 != nil {
 		t.Errorf("Failed to delete record from scribble cacher - %v%v", err, err2)
 	}
@@ -67,7 +67,7 @@ func TestScribbleDeleteRecord(t *testing.T) {
 // test scribble cache resetRecords
 func TestScribbleResetRecords(t *testing.T) {
 	scribbleReset()
-	err := cache.ResetRecords(&nanoBoth)
+	err := cache.ResetRecords(&microBoth)
 	if err != nil {
 		t.Errorf("Failed to reset records in scribble cacher - %v", err)
 	}
@@ -77,7 +77,7 @@ func TestScribbleResetRecords(t *testing.T) {
 func TestScribbleListRecords(t *testing.T) {
 	scribbleReset()
 	_, err := cache.ListRecords()
-	cache.ResetRecords(&nanoBoth)
+	cache.ResetRecords(&microBoth)
 	_, err2 := cache.ListRecords()
 	if err != nil || err2 != nil {
 		t.Errorf("Failed to list records in scribble cacher - %v%v", err, err2)

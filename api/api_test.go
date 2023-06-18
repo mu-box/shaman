@@ -14,9 +14,9 @@ import (
 
 	"github.com/jcelliott/lumber"
 
-	"github.com/nanopack/shaman/api"
-	"github.com/nanopack/shaman/config"
-	shaman "github.com/nanopack/shaman/core/common"
+	"github.com/mu-box/shaman/api"
+	"github.com/mu-box/shaman/config"
+	shaman "github.com/mu-box/shaman/core/common"
 )
 
 var (
@@ -223,9 +223,9 @@ func TestDeleteRecord(t *testing.T) {
 	}
 }
 
-////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////
 // PRIVS
-////////////////////////////////////////////////////////////////////////////////
+// //////////////////////////////////////////////////////////////////////////////
 // hit api and return response body
 func rest(method, route, data string) ([]byte, int, error) {
 	body := bytes.NewBuffer([]byte(data))

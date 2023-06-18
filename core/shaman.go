@@ -6,9 +6,9 @@ package shaman
 import (
 	"fmt"
 
-	"github.com/nanopack/shaman/cache"
-	"github.com/nanopack/shaman/config"
-	sham "github.com/nanopack/shaman/core/common"
+	"github.com/mu-box/shaman/cache"
+	"github.com/mu-box/shaman/config"
+	sham "github.com/mu-box/shaman/core/common"
 )
 
 // Answers is the cached collection of dns records

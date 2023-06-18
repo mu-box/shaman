@@ -7,9 +7,9 @@ import (
 
 	"github.com/miekg/dns"
 
-	"github.com/nanopack/shaman/config"
-	"github.com/nanopack/shaman/core"
-	sham "github.com/nanopack/shaman/core/common"
+	"github.com/mu-box/shaman/config"
+	shaman "github.com/mu-box/shaman/core"
+	sham "github.com/mu-box/shaman/core/common"
 )
 
 // Start starts the DNS listener

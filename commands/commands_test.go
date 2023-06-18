@@ -10,9 +10,9 @@ import (
 	"github.com/jcelliott/lumber"
 	"github.com/spf13/cobra"
 
-	"github.com/nanopack/shaman/api"
-	"github.com/nanopack/shaman/commands"
-	"github.com/nanopack/shaman/config"
+	"github.com/mu-box/shaman/api"
+	"github.com/mu-box/shaman/commands"
+	"github.com/mu-box/shaman/config"
 )
 
 func init() {
@@ -57,7 +57,7 @@ func TestMain(m *testing.M) {
 func TestAddRecord(t *testing.T) {
 	commands.ResetVars()
 
-	args := strings.Split("add -d nanobox.io -A 127.0.0.1", " ")
+	args := strings.Split("add -d microbox.cloud -A 127.0.0.1", " ")
 	shamanTool.SetArgs(args)
 
 	out, err := capture(shamanTool.Execute)
@@ -65,7 +65,7 @@ func TestAddRecord(t *testing.T) {
 		t.Errorf("Failed to execute - %v", err.Error())
 	}
 
-	if string(out) != "{\"domain\":\"nanobox.io.\",\"records\":[{\"ttl\":60,\"class\":\"IN\",\"type\":\"A\",\"address\":\"127.0.0.1\"}]}\n" {
+	if string(out) != "{\"domain\":\"microbox.cloud.\",\"records\":[{\"ttl\":60,\"class\":\"IN\",\"type\":\"A\",\"address\":\"127.0.0.1\"}]}\n" {
 		t.Errorf("Unexpected output: %+q", string(out))
 	}
 }
@@ -81,7 +81,7 @@ func TestListRecords(t *testing.T) {
 		t.Errorf("Failed to execute - %v", err.Error())
 	}
 
-	if string(out) != "[\"nanobox.io\"]\n" {
+	if string(out) != "[\"microbox.cloud\"]\n" {
 		t.Errorf("Unexpected output: %+q", string(out))
 	}
 
@@ -93,7 +93,7 @@ func TestListRecords(t *testing.T) {
 		t.Errorf("Failed to execute - %v", err.Error())
 	}
 
-	if string(out) != "[{\"domain\":\"nanobox.io.\",\"records\":[{\"ttl\":60,\"class\":\"IN\",\"type\":\"A\",\"address\":\"127.0.0.1\"}]}]\n" {
+	if string(out) != "[{\"domain\":\"microbox.cloud.\",\"records\":[{\"ttl\":60,\"class\":\"IN\",\"type\":\"A\",\"address\":\"127.0.0.1\"}]}]\n" {
 		t.Errorf("Unexpected output: %+q", string(out))
 	}
 }
@@ -101,7 +101,7 @@ func TestListRecords(t *testing.T) {
 func TestResetRecords(t *testing.T) {
 	commands.ResetVars()
 
-	args := strings.Split("reset -j [{\"domain\":\"nanopack.io\"}]", " ")
+	args := strings.Split("reset -j [{\"domain\":\"microbox.cloud\"}]", " ")
 	shamanTool.SetArgs(args)
 
 	out, err := capture(shamanTool.Execute)
@@ -109,7 +109,7 @@ func TestResetRecords(t *testing.T) {
 		t.Errorf("Failed to execute - %v", err.Error())
 	}
 
-	if string(out) != "[{\"domain\":\"nanopack.io.\",\"records\":null}]\n" {
+	if string(out) != "[{\"domain\":\"microbox.cloud.\",\"records\":null}]\n" {
 		t.Errorf("Unexpected output: %+q", string(out))
 	}
 
@@ -121,7 +121,7 @@ func TestResetRecords(t *testing.T) {
 		t.Errorf("Failed to execute - %v", err.Error())
 	}
 
-	if string(out) != "[\"nanopack.io\"]\n" {
+	if string(out) != "[\"microbox.cloud\"]\n" {
 		t.Errorf("Unexpected output: %+q", string(out))
 	}
 }
@@ -129,7 +129,7 @@ func TestResetRecords(t *testing.T) {
 func TestUpdateRecord(t *testing.T) {
 	commands.ResetVars()
 
-	args := strings.Split("update -d nanopack.io -A 127.0.0.5", " ")
+	args := strings.Split("update -d microbox.cloud -A 127.0.0.5", " ")
 	shamanTool.SetArgs(args)
 
 	out, err := capture(shamanTool.Execute)
@@ -137,7 +137,7 @@ func TestUpdateRecord(t *testing.T) {
 		t.Errorf("Failed to execute - %v", err.Error())
 	}
 
-	if string(out) != "{\"domain\":\"nanopack.io.\",\"records\":[{\"ttl\":60,\"class\":\"IN\",\"type\":\"A\",\"address\":\"127.0.0.5\"}]}\n" {
+	if string(out) != "{\"domain\":\"microbox.cloud.\",\"records\":[{\"ttl\":60,\"class\":\"IN\",\"type\":\"A\",\"address\":\"127.0.0.5\"}]}\n" {
 		t.Errorf("Unexpected output: %+q", string(out))
 	}
 
@@ -149,7 +149,7 @@ func TestUpdateRecord(t *testing.T) {
 		t.Errorf("Failed to execute - %v", err.Error())
 	}
 
-	if string(out) != "[\"nanopack.io\"]\n" {
+	if string(out) != "[\"microbox.cloud\"]\n" {
 		t.Errorf("Unexpected output: %+q", string(out))
 	}
 }
@@ -157,7 +157,7 @@ func TestUpdateRecord(t *testing.T) {
 func TestGetRecord(t *testing.T) {
 	commands.ResetVars()
 
-	args := strings.Split("get -d nanopack.io", " ")
+	args := strings.Split("get -d microbox.cloud", " ")
 	shamanTool.SetArgs(args)
 
 	out, err := capture(shamanTool.Execute)
@@ -165,7 +165,7 @@ func TestGetRecord(t *testing.T) {
 		t.Errorf("Failed to execute - %v", err.Error())
 	}
 
-	if string(out) != "{\"domain\":\"nanopack.io.\",\"records\":[{\"ttl\":60,\"class\":\"IN\",\"type\":\"A\",\"address\":\"127.0.0.5\"}]}\n" {
+	if string(out) != "{\"domain\":\"microbox.cloud.\",\"records\":[{\"ttl\":60,\"class\":\"IN\",\"type\":\"A\",\"address\":\"127.0.0.5\"}]}\n" {
 		t.Errorf("Unexpected output: %+q", string(out))
 	}
 }
@@ -173,7 +173,7 @@ func TestGetRecord(t *testing.T) {
 func TestDeleteRecord(t *testing.T) {
 	commands.ResetVars()
 
-	args := strings.Split("delete -d nanopack.io", " ")
+	args := strings.Split("delete -d microbox.cloud", " ")
 	shamanTool.SetArgs(args)
 
 	out, err := capture(shamanTool.Execute)

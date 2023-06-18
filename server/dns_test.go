@@ -9,15 +9,15 @@ import (
 	"github.com/jcelliott/lumber"
 	"github.com/miekg/dns"
 
-	"github.com/nanopack/shaman/config"
-	"github.com/nanopack/shaman/core"
-	sham "github.com/nanopack/shaman/core/common"
-	"github.com/nanopack/shaman/server"
+	"github.com/mu-box/shaman/config"
+	"github.com/mu-box/shaman/core"
+	sham "github.com/mu-box/shaman/core/common"
+	"github.com/mu-box/shaman/server"
 )
 
-var nanopack = sham.Resource{Domain: "nanopack.io.", Records: []sham.Record{{Address: "127.0.0.1"}}}
-var wildcard = sham.Resource{Domain: "*.nanopack.io.", Records: []sham.Record{{Address: "nanopack.io", RType: "CNAME"}}}
-var rootname = sham.Resource{Domain: "nanopack.com.", Records: []sham.Record{{Address: "nanopack.io", RType: "CNAME"}}}
+var micropack = sham.Resource{Domain: "microbox.cloud.", Records: []sham.Record{{Address: "127.0.0.1"}}}
+var wildcard = sham.Resource{Domain: "*.microbox.cloud.", Records: []sham.Record{{Address: "microbox.cloud", RType: "CNAME"}}}
+var rootname = sham.Resource{Domain: "microbox.rocks.", Records: []sham.Record{{Address: "microbox.cloud", RType: "CNAME"}}}
 
 func TestMain(m *testing.M) {
 	// manually configure
@@ -35,7 +35,7 @@ func TestMain(m *testing.M) {
 }
 
 func TestDNS(t *testing.T) {
-	err := shaman.AddRecord(&nanopack)
+	err := shaman.AddRecord(&micropack)
 	if err != nil {
 		t.Errorf("Failed to add record - %v", err)
 		t.FailNow()
@@ -53,29 +53,29 @@ func TestDNS(t *testing.T) {
 		t.FailNow()
 	}
 
-	r, err := ResolveIt("nanopack.io", dns.TypeA)
+	r, err := ResolveIt("microbox.cloud", dns.TypeA)
 	if err != nil {
 		t.Errorf("Failed to get record - %v", err)
 	}
 	if len(r.Answer) == 0 {
 		t.Error("No record found")
 	}
-	if len(r.Answer) > 0 && r.Answer[0].String() != "nanopack.io.\t60\tIN\tA\t127.0.0.1" {
+	if len(r.Answer) > 0 && r.Answer[0].String() != "microbox.cloud.\t60\tIN\tA\t127.0.0.1" {
 		t.Errorf("Response doesn't match expected - %+q", r.Answer[0].String())
 	}
 
-	r, err = ResolveIt("nanopack.com", dns.TypeA)
+	r, err = ResolveIt("microbox.rocks", dns.TypeA)
 	if err != nil {
 		t.Errorf("Failed to get record - %v", err)
 	}
 	if len(r.Answer) == 0 {
 		t.Error("No record found")
 	}
-	if len(r.Answer) > 0 && r.Answer[0].String() != "nanopack.com.\t60\tIN\tA\t127.0.0.1" {
+	if len(r.Answer) > 0 && r.Answer[0].String() != "microbox.rocks.\t60\tIN\tA\t127.0.0.1" {
 		t.Errorf("Response doesn't match expected - %+q", r.Answer[0].String())
 	}
 
-	r, err = ResolveIt("a.b.nanobox.io", dns.TypeA)
+	r, err = ResolveIt("a.b.microbox.cloud", dns.TypeA)
 	if err != nil {
 		t.Errorf("Failed to get record - %v", err)
 	}
@@ -83,29 +83,29 @@ func TestDNS(t *testing.T) {
 		t.Error("Found non-existant record")
 	}
 
-	r, err = ResolveIt("wildcard.nanopack.io", dns.TypeA)
+	r, err = ResolveIt("wildcard.microbox.cloud", dns.TypeA)
 	if err != nil {
 		t.Errorf("Failed to get record - %v", err)
 	}
 	if len(r.Answer) == 0 {
 		t.Error("Wildcard lookup failed")
 	}
-	if len(r.Answer) > 0 && r.Answer[0].String() != "wildcard.nanopack.io.\t60\tIN\tA\t127.0.0.1" {
+	if len(r.Answer) > 0 && r.Answer[0].String() != "wildcard.microbox.cloud.\t60\tIN\tA\t127.0.0.1" {
 		t.Errorf("Response doesn't match expected - %+q", r.Answer[0].String())
 	}
 
-	r, err = ResolveIt("very.deep.cascading.wildcard.nanopack.io", dns.TypeA)
+	r, err = ResolveIt("very.deep.cascading.wildcard.microbox.cloud", dns.TypeA)
 	if err != nil {
 		t.Errorf("Failed to get record - %v", err)
 	}
 	if len(r.Answer) == 0 {
 		t.Error("Wildcard lookup failed")
 	}
-	if len(r.Answer) > 0 && r.Answer[0].String() != "very.deep.cascading.wildcard.nanopack.io.\t60\tIN\tA\t127.0.0.1" {
+	if len(r.Answer) > 0 && r.Answer[0].String() != "very.deep.cascading.wildcard.microbox.cloud.\t60\tIN\tA\t127.0.0.1" {
 		t.Errorf("Response doesn't match expected - %+q", r.Answer[0].String())
 	}
 
-	r, err = ResolveIt("nanopack.io", dns.TypeMX, true)
+	r, err = ResolveIt("microbox.cloud", dns.TypeMX, true)
 	if err != nil {
 		t.Errorf("Failed to get record - %v", err)
 	}

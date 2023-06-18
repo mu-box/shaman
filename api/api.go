@@ -10,9 +10,9 @@ import (
 	"net/http"
 
 	"github.com/gorilla/pat"
-	nanoauth "github.com/nanobox-io/golang-nanoauth"
+	microauth "github.com/mu-box/golang-microauth"
 
-	"github.com/nanopack/shaman/config"
+	"github.com/mu-box/shaman/config"
 )
 
 type (
@@ -25,7 +25,7 @@ type (
 )
 
 var (
-	auth            nanoauth.Auth
+	auth            microauth.Auth
 	errBadJson      = errors.New("Bad JSON syntax received in body")
 	errBodyReadFail = errors.New("Body Read Failed")
 )
@@ -43,9 +43,9 @@ func Start() error {
 	var cert *tls.Certificate
 	var err error
 	if config.ApiCrt == "" {
-		cert, err = nanoauth.Generate(config.ApiDomain)
+		cert, err = microauth.Generate(config.ApiDomain)
 	} else {
-		cert, err = nanoauth.Load(config.ApiCrt, config.ApiKey, config.ApiKeyPassword)
+		cert, err = microauth.Load(config.ApiCrt, config.ApiKey, config.ApiKeyPassword)
 	}
 	if err != nil {
 		return fmt.Errorf("Failed to generate or load cert - %s", err.Error())

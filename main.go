@@ -1,40 +1,40 @@
 // Shaman is a small, clusterable, lightweight, api-driven dns server.
 //
-// Usage
+// # Usage
 //
 // To start shaman as a server, simply run (with administrator privileges):
 //
-//  shaman -s
+//	shaman -s
 //
 // For more specific usage information, refer to the help doc `shaman -h`:
-//  Usage:
-//    shaman [flags]
-//    shaman [command]
 //
-//  Available Commands:
-//    add         Add a domain to shaman
-//    delete      Remove a domain from shaman
-//    list        List all domains in shaman
-//    get         Get records for a domain
-//    update      Update records for a domain
-//    reset       Reset all domains in shaman
+//	Usage:
+//	  shaman [flags]
+//	  shaman [command]
 //
-//  Flags:
-//    -C, --api-crt string            Path to SSL crt for API access
-//    -k, --api-key string            Path to SSL key for API access
-//    -p, --api-key-password string   Password for SSL key
-//    -H, --api-listen string         Listen address for the API (ip:port) (default "127.0.0.1:1632")
-//    -c, --config-file string        Configuration file to load
-//    -O, --dns-listen string         Listen address for DNS requests (ip:port) (default "127.0.0.1:53")
-//    -d, --domain string             Parent domain for requests (default ".")
-//    -i, --insecure                  Disable tls key checking (client) and listen on http (api). Also disables auth-token
-//    -2, --l2-connect string         Connection string for the l2 cache (default "scribble:///var/db/shaman")
-//    -l, --log-level string          Log level to output [fatal|error|info|debug|trace] (default "INFO")
-//    -s, --server                    Run in server mode
-//    -t, --token string              Token for API Access (default "secret")
-//    -T, --ttl int                   Default TTL for DNS records (default 60)
-//    -v, --version                   Print version info and exit
+//	Available Commands:
+//	  add         Add a domain to shaman
+//	  delete      Remove a domain from shaman
+//	  list        List all domains in shaman
+//	  get         Get records for a domain
+//	  update      Update records for a domain
+//	  reset       Reset all domains in shaman
 //
+//	Flags:
+//	  -C, --api-crt string            Path to SSL crt for API access
+//	  -k, --api-key string            Path to SSL key for API access
+//	  -p, --api-key-password string   Password for SSL key
+//	  -H, --api-listen string         Listen address for the API (ip:port) (default "127.0.0.1:1632")
+//	  -c, --config-file string        Configuration file to load
+//	  -O, --dns-listen string         Listen address for DNS requests (ip:port) (default "127.0.0.1:53")
+//	  -d, --domain string             Parent domain for requests (default ".")
+//	  -i, --insecure                  Disable tls key checking (client) and listen on http (api). Also disables auth-token
+//	  -2, --l2-connect string         Connection string for the l2 cache (default "scribble:///var/db/shaman")
+//	  -l, --log-level string          Log level to output [fatal|error|info|debug|trace] (default "INFO")
+//	  -s, --server                    Run in server mode
+//	  -t, --token string              Token for API Access (default "secret")
+//	  -T, --ttl int                   Default TTL for DNS records (default 60)
+//	  -v, --version                   Print version info and exit
 package main
 
 import (
@@ -43,11 +43,11 @@ import (
 	"github.com/jcelliott/lumber"
 	"github.com/spf13/cobra"
 
-	"github.com/nanopack/shaman/api"
-	"github.com/nanopack/shaman/cache"
-	"github.com/nanopack/shaman/commands"
-	"github.com/nanopack/shaman/config"
-	"github.com/nanopack/shaman/server"
+	"github.com/mu-box/shaman/api"
+	"github.com/mu-box/shaman/cache"
+	"github.com/mu-box/shaman/commands"
+	"github.com/mu-box/shaman/config"
+	"github.com/mu-box/shaman/server"
 )
 
 var (

@@ -8,7 +8,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	shaman "github.com/nanopack/shaman/core/common"
+	shaman "github.com/mu-box/shaman/core/common"
 )
 
 var (

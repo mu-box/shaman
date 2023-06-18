@@ -1,11 +1,12 @@
 // Package commands provides the cli functionality.
 // Runnable commands are:
-//  add
-//  get
-//  update
-//  delete
-//  list
-//  reset
+//
+//	add
+//	get
+//	update
+//	delete
+//	list
+//	reset
 package commands
 
 import (
@@ -17,8 +18,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/nanopack/shaman/config"
-	shaman "github.com/nanopack/shaman/core/common"
+	"github.com/mu-box/shaman/config"
+	shaman "github.com/mu-box/shaman/core/common"
 )
 
 func rest(method string, path string, body io.Reader) (*http.Response, error) {

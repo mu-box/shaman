@@ -2,7 +2,7 @@ language: go
 
 go: "1.9"
 
-go_import_path: github.com/nanopack/shaman
+go_import_path: github.com/mu-box/shaman
 
 before_script:
   - scripts/travis_consul.sh

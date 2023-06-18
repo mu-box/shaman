@@ -4,7 +4,7 @@ package common
 import (
 	"fmt"
 
-	"github.com/nanopack/shaman/config"
+	"github.com/mu-box/shaman/config"
 )
 
 // Resource contains the domain name and a slice of its records

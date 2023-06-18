@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/nanopack/shaman/config"
-	shaman "github.com/nanopack/shaman/core/common"
+	"github.com/mu-box/shaman/config"
+	shaman "github.com/mu-box/shaman/core/common"
 )
 
 var (

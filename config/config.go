@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	ApiDomain          = "shaman.nanobox.io"         // Domain for generating cert (if none passed)
+	ApiDomain          = "shaman.microbox.cloud"     // Domain for generating cert (if none passed)
 	ApiCrt             = ""                          // Path to SSL crt for API access
 	ApiKey             = ""                          // Path to SSL key for API access
 	ApiKeyPassword     = ""                          // Password for SSL key

@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/nanopack/shaman/config"
+	"github.com/mu-box/shaman/config"
 
 	consul "github.com/hashicorp/consul/api"
-	shaman "github.com/nanopack/shaman/core/common"
+	shaman "github.com/mu-box/shaman/core/common"
 )
 
 const prefix = "domains:"

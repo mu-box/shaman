@@ -6,15 +6,15 @@ import (
 
 	"github.com/jcelliott/lumber"
 
-	"github.com/nanopack/shaman/cache"
-	"github.com/nanopack/shaman/config"
-	shaman "github.com/nanopack/shaman/core/common"
+	"github.com/mu-box/shaman/cache"
+	"github.com/mu-box/shaman/config"
+	shaman "github.com/mu-box/shaman/core/common"
 )
 
 var (
-	nanopack = shaman.Resource{Domain: "nanopack.io.", Records: []shaman.Record{{Address: "127.0.0.1"}}}
-	nanobox  = shaman.Resource{Domain: "nanobox.io.", Records: []shaman.Record{{Address: "127.0.0.2"}}}
-	nanoBoth = []shaman.Resource{nanopack, nanobox}
+	micropack = shaman.Resource{Domain: "microbox.cloud.", Records: []shaman.Record{{Address: "127.0.0.1"}}}
+	microbox  = shaman.Resource{Domain: "microbox.cloud.", Records: []shaman.Record{{Address: "127.0.0.2"}}}
+	microBoth = []shaman.Resource{micropack, microbox}
 )
 
 func TestMain(m *testing.M) {
@@ -49,7 +49,7 @@ func TestNoneAddRecord(t *testing.T) {
 // test nil cache getRecord
 func TestNoneGetRecord(t *testing.T) {
 	noneReset()
-	_, err := cache.GetRecord("nanopack.io")
+	_, err := cache.GetRecord("microbox.cloud")
 	if err != nil {
 		t.Errorf("Failed to get record from none cacher - %v", err)
 	}
@@ -58,7 +58,7 @@ func TestNoneGetRecord(t *testing.T) {
 // test nil cache updateRecord
 func TestNoneUpdateRecord(t *testing.T) {
 	noneReset()
-	err := cache.UpdateRecord("nanopack.io", &shaman.Resource{})
+	err := cache.UpdateRecord("microbox.cloud", &shaman.Resource{})
 	if err != nil {
 		t.Errorf("Failed to update record in none cacher - %v", err)
 	}
@@ -67,7 +67,7 @@ func TestNoneUpdateRecord(t *testing.T) {
 // test nil cache deleteRecord
 func TestNoneDeleteRecord(t *testing.T) {
 	noneReset()
-	err := cache.DeleteRecord("nanopack.io")
+	err := cache.DeleteRecord("microbox.cloud")
 	if err != nil {
 		t.Errorf("Failed to delete record from none cacher - %v", err)
 	}

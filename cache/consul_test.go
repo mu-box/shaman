@@ -3,9 +3,9 @@ package cache_test
 import (
 	"testing"
 
-	"github.com/nanopack/shaman/cache"
-	"github.com/nanopack/shaman/config"
-	shaman "github.com/nanopack/shaman/core/common"
+	"github.com/mu-box/shaman/cache"
+	"github.com/mu-box/shaman/config"
+	shaman "github.com/mu-box/shaman/core/common"
 )
 
 // test consul cache init
@@ -21,7 +21,7 @@ func TestConsulInitialize(t *testing.T) {
 // test consul cache addRecord
 func TestConsulAddRecord(t *testing.T) {
 	consulReset()
-	err := cache.AddRecord(&nanopack)
+	err := cache.AddRecord(&micropack)
 	if err != nil {
 		t.Errorf("Failed to add record to consul cacher - %v", err)
 	}
@@ -30,9 +30,9 @@ func TestConsulAddRecord(t *testing.T) {
 // test consul cache getRecord
 func TestConsulGetRecord(t *testing.T) {
 	consulReset()
-	cache.AddRecord(&nanopack)
-	_, err := cache.GetRecord("nanobox.io")
-	_, err2 := cache.GetRecord("nanopack.io")
+	cache.AddRecord(&micropack)
+	_, err := cache.GetRecord("microbox.cloud")
+	_, err2 := cache.GetRecord("microbox.cloud")
 	if err == nil || err2 != nil {
 		t.Errorf("Failed to get record from consul cacher - %v%v", err, err2)
 	}
@@ -41,8 +41,8 @@ func TestConsulGetRecord(t *testing.T) {
 // test consul cache updateRecord
 func TestConsulUpdateRecord(t *testing.T) {
 	consulReset()
-	err := cache.UpdateRecord("nanobox.io", &nanopack)
-	err2 := cache.UpdateRecord("nanopack.io", &nanopack)
+	err := cache.UpdateRecord("microbox.cloud", &micropack)
+	err2 := cache.UpdateRecord("microbox.cloud", &micropack)
 	if err != nil || err2 != nil {
 		t.Errorf("Failed to update record in consul cacher - %v%v", err, err2)
 	}
@@ -51,9 +51,9 @@ func TestConsulUpdateRecord(t *testing.T) {
 // test consul cache deleteRecord
 func TestConsulDeleteRecord(t *testing.T) {
 	consulReset()
-	err := cache.DeleteRecord("nanobox.io")
-	cache.AddRecord(&nanopack)
-	err2 := cache.DeleteRecord("nanopack.io")
+	err := cache.DeleteRecord("microbox.cloud")
+	cache.AddRecord(&micropack)
+	err2 := cache.DeleteRecord("microbox.cloud")
 	if err != nil || err2 != nil {
 		t.Errorf("Failed to delete record from consul cacher - %v%v", err, err2)
 	}
@@ -62,7 +62,7 @@ func TestConsulDeleteRecord(t *testing.T) {
 // test consul cache resetRecords
 func TestConsulResetRecords(t *testing.T) {
 	consulReset()
-	err := cache.ResetRecords(&nanoBoth)
+	err := cache.ResetRecords(&microBoth)
 	if err != nil {
 		t.Errorf("Failed to reset records in consul cacher - %v", err)
 	}
@@ -72,7 +72,7 @@ func TestConsulResetRecords(t *testing.T) {
 func TestConsulListRecords(t *testing.T) {
 	consulReset()
 	_, err := cache.ListRecords()
-	cache.ResetRecords(&nanoBoth)
+	cache.ResetRecords(&microBoth)
 	_, err2 := cache.ListRecords()
 	if err != nil || err2 != nil {
 		t.Errorf("Failed to list records in consul cacher - %v%v", err, err2)

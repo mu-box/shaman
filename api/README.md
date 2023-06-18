@@ -1,5 +1,5 @@
-[![shaman logo](http://nano-assets.gopagoda.io/readme-headers/shaman.png)](http://nanobox.io/open-source#shaman)  
-[![Build Status](https://travis-ci.org/nanopack/shaman.svg)](https://travis-ci.org/nanopack/shaman)
+[![shaman logo](http://microbox.rocks/assets/readme-headers/shaman.png)](http://microbox.cloud/open-source#shaman)
+[![Build Status](https://github.com/mu-box/shaman/actions/workflows/ci.yaml/badge.svg)](https://github.com/mu-box/shaman/actions)
 
 # Shaman
 
@@ -21,48 +21,48 @@ Small, lightweight, api-driven dns server.
 #### add domain
 ```sh
 $ curl -k -H "X-AUTH-TOKEN: secret" https://localhost:1632/records -d \
-       '{"domain":"nanopack.io","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"}]}'
-# {"domain":"nanopack.io.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"}]}
+       '{"domain":"microbox.cloud","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"}]}'
+# {"domain":"microbox.cloud.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"}]}
 ```
 
 #### list domains
 ```sh
 $ curl -k -H "X-AUTH-TOKEN: secret" https://localhost:1632/records
-# ["nanopack.io"]
+# ["microbox.cloud"]
 ```
 or add `?full=true` for the full records
 ```sh
 $ curl -k -H "X-AUTH-TOKEN: secret" https://localhost:1632/records?full=true
-# [{"domain":"nanopack.io.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"}]}]
+# [{"domain":"microbox.cloud.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"}]}]
 ```
 
 #### update domains
 ```sh
 $ curl -k -H "X-AUTH-TOKEN: secret" https://localhost:1632/records -d \
-       '[{"domain":"nanobox.io","records":[{"address":"127.0.0.1"}]}]' \
+       '[{"domain":"microbox.cloud","records":[{"address":"127.0.0.1"}]}]' \
        -X PUT
-# [{"domain":"nanobox.io.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.1"}]}]
+# [{"domain":"microbox.cloud.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.1"}]}]
 ```
 
 #### update domain
 ```sh
-$ curl -k -H "X-AUTH-TOKEN: secret" https://localhost:1632/records/nanobox.io -d \
-       '{"domain":"nanobox.io","records":[{"address":"127.0.0.2"}]}' \
+$ curl -k -H "X-AUTH-TOKEN: secret" https://localhost:1632/records/microbox.cloud -d \
+       '{"domain":"microbox.cloud","records":[{"address":"127.0.0.2"}]}' \
        -X PUT
-# {"domain":"nanobox.io.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"}]}
+# {"domain":"microbox.cloud.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"}]}
 ```
 
 #### delete domain
 ```sh
-$ curl -k -H "X-AUTH-TOKEN: secret" https://localhost:1632/records/nanobox.io \
+$ curl -k -H "X-AUTH-TOKEN: secret" https://localhost:1632/records/microbox.cloud \
        -X DELETE
 # {"msg":"success"}
 ```
 
 #### get domain
 ```sh
-$ curl -k -H "X-AUTH-TOKEN: secret" https://localhost:1632/records/nanobox.io
-# {"err":"failed to find record for domain - 'nanobox.io'"}
+$ curl -k -H "X-AUTH-TOKEN: secret" https://localhost:1632/records/microbox.cloud
+# {"err":"failed to find record for domain - 'microbox.cloud'"}
 ```
 
-[![oss logo](http://nano-assets.gopagoda.io/open-src/nanobox-open-src.png)](http://nanobox.io/open-source)
+[![oss logo](http://microbox.rocks/assets/open-src/microbox-open-src.png)](http://microbox.cloud/open-source)

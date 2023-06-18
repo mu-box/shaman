@@ -1,8 +1,8 @@
-[![shaman logo](http://nano-assets.gopagoda.io/readme-headers/shaman.png)](http://nanobox.io/open-source#shaman)  
-[![Build Status](https://travis-ci.org/nanopack/shaman.svg)](https://travis-ci.org/nanopack/shaman)
-[![GoDoc](https://godoc.org/github.com/nanopack/shaman?status.svg)](https://godoc.org/github.com/nanopack/shaman)
-[![Go Report Card](https://goreportcard.com/badge/github.com/nanopack/shaman)](https://goreportcard.com/report/github.com/nanopack/shaman)
-<!-- [![GoCover](https://gocover.io/_badge/github.com/nanopack/shaman)](https://gocover.io/github.com/nanopack/shaman) -->
+[![shaman logo](http://microbox.rocks/assets/readme-headers/shaman.png)](http://microbox.cloud/open-source#shaman)
+[![Build Status](https://github.com/mu-box/shaman/actions/workflows/ci.yaml/badge.svg)](https://github.com/mu-box/shaman/actions)
+[![GoDoc](https://godoc.org/github.com/mu-box/shaman?status.svg)](https://godoc.org/github.com/mu-box/shaman)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mu-box/shaman)](https://goreportcard.com/report/github.com/mu-box/shaman)
+<!-- [![GoCover](https://gocover.io/_badge/github.com/mu-box/shaman)](https://gocover.io/github.com/mu-box/shaman) -->
 
 # Shaman
 
@@ -15,11 +15,11 @@ Small, clusterable, lightweight, api-driven dns server.
 shaman -s
 
 # register a new domain
-shaman add -d nanopack.io -A 127.0.0.1
+shaman add -d microbox.cloud -A 127.0.0.1
 
 # perform dns lookup
-# OR `nslookup -port=53 nanopack.io 127.0.0.1`
-dig @localhost nanopack.io +short
+# OR `nslookup -port=53 microbox.cloud 127.0.0.1`
+dig @localhost microbox.cloud +short
 # 127.0.0.1
 
 # Congratulations!
@@ -50,7 +50,7 @@ Available Commands:
 
 Flags:
   -C, --api-crt string            Path to SSL crt for API access
-  -a, --api-domain string         Domain of generated cert (if none passed) (default "shaman.nanobox.io")
+  -a, --api-domain string         Domain of generated cert (if none passed) (default "shaman.microbox.cloud")
   -k, --api-key string            Path to SSL key for API access
   -p, --api-key-password string   Password for SSL key
   -H, --api-listen string         Listen address for the API (ip:port) (default "127.0.0.1:1632")
@@ -69,18 +69,18 @@ Flags:
 Use "shaman [command] --help" for more information about a command.
 ```
 
-For usage examples, see [api](api/README.md) and/or [cli](commands/README.md) readme  
+For usage examples, see [api](api/README.md) and/or [cli](commands/README.md) readme
 
 ### As a Server
-To start shaman as a server run:  
-`shaman --server`  
-An optional config file can also be passed on startup:  
-`shaman -c config.json`  
+To start shaman as a server run:
+`shaman --server`
+An optional config file can also be passed on startup:
+`shaman -c config.json`
 
 >config.json
 >```json
 >{
->  "api-domain": "shaman.nanobox.io",
+>  "api-domain": "shaman.microbox.cloud",
 >  "api-crt": "",
 >  "api-key": "",
 >  "api-key-password": "",
@@ -121,9 +121,9 @@ The connection string looks like `postgres://[user@]host/database`.
 | **GET** /records/{domain} | Returns the records for that domain | nil | json domain object |
 | **DELETE** /records/{domain} | Delete a domain | nil | success message |
 
-**note:** The API requires a token to be passed for authentication by default and is configurable at server start (`--token`). The token is passed in as a custom header: `X-AUTH-TOKEN`.  
+**note:** The API requires a token to be passed for authentication by default and is configurable at server start (`--token`). The token is passed in as a custom header: `X-AUTH-TOKEN`.
 
-For examples, see [the api's readme](api/README.md)  
+For examples, see [the api's readme](api/README.md)
 
 
 ## Overview
@@ -148,7 +148,7 @@ For examples, see [the api's readme](api/README.md)
 json:
 ```json
 {
-  "domain": "nanopack.io.",
+  "domain": "microbox.cloud.",
   "records": [
     {
       "ttl": 60,
@@ -219,7 +219,7 @@ Fields:
 
 
 ## Contributing
-Contributions to shaman are welcome and encouraged. Shaman is a [Nanobox](https://nanobox.io) project and contributions should follow the [Nanobox Contribution Process & Guidelines](https://docs.nanobox.io/contributing/).
+Contributions to shaman are welcome and encouraged. Shaman is a [Microbox](https://microbox.cloud) project and contributions should follow the [Microbox Contribution Process & Guidelines](https://docs.microbox.cloud/contributing/).
 
 
-[![oss logo](http://nano-assets.gopagoda.io/open-src/nanobox-open-src.png)](http://nanobox.io/open-source)
+[![oss logo](http://microbox.rocks/assets/open-src/microbox-open-src.png)](http://microbox.cloud/open-source)

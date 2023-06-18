@@ -1,5 +1,5 @@
-[![shaman logo](http://nano-assets.gopagoda.io/readme-headers/shaman.png)](http://nanobox.io/open-source#shaman)  
-[![Build Status](https://travis-ci.org/nanopack/shaman.svg)](https://travis-ci.org/nanopack/shaman)
+[![shaman logo](http://microbox.rocks/assets/readme-headers/shaman.png)](http://microbox.cloud/open-source#shaman)
+[![Build Status](https://github.com/mu-box/shaman/actions/workflows/ci.yaml/badge.svg)](https://github.com/mu-box/shaman/actions)
 
 # Shaman
 
@@ -73,49 +73,49 @@ $ shaman -c config.json
 #### add records
 
 ```sh
-$ shaman -i add -d nanopack.io -A 127.0.0.1
-# {"domain":"nanopack.io.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.1"}]}
+$ shaman -i add -d microbox.cloud -A 127.0.0.1
+# {"domain":"microbox.cloud.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.1"}]}
 
-$ shaman -i add -j '{"domain":"nanopack.io","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"}]}'
-# {"domain":"nanopack.io.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"},{"ttl":60,"class":"IN","type":"A","address":"127.0.0.1"}]}
+$ shaman -i add -j '{"domain":"microbox.cloud","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"}]}'
+# {"domain":"microbox.cloud.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"},{"ttl":60,"class":"IN","type":"A","address":"127.0.0.1"}]}
 ```
 
 #### delete record
 
 ```sh
-$ shaman -i delete -d nanobox.io
+$ shaman -i delete -d microbox.cloud
 # {"msg":"success"}
 ```
 
 #### update record
 
 ```sh
-$ shaman -i update -d nanopack.io -A 127.0.0.2
-# {"domain":"nanopack.io.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"}]}
+$ shaman -i update -d microbox.cloud -A 127.0.0.2
+# {"domain":"microbox.cloud.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"}]}
 ```
 
 #### get record
 
 ```sh
-$ shaman -i get -d nanopack.io
-# {"domain":"nanopack.io.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"}]}
+$ shaman -i get -d microbox.cloud
+# {"domain":"microbox.cloud.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.2"}]}
 ```
 
 #### reset records
 
 ```sh
-$ shaman -i reset -j '[{"domain":"nanobox.io", "records":[{"address":"127.0.0.5"}]}]'
-# [{"domain":"nanobox.io.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.5"}]}]
+$ shaman -i reset -j '[{"domain":"microbox.cloud", "records":[{"address":"127.0.0.5"}]}]'
+# [{"domain":"microbox.cloud.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.5"}]}]
 ```
 
 #### list records
 
 ```sh
 $ shaman -i list
-# ["nanobox.io"]
+# ["microbox.cloud"]
 
 $ shaman -i list -f
-# [{"domain":"nanobox.io.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.5"}]}]
+# [{"domain":"microbox.cloud.","records":[{"ttl":60,"class":"IN","type":"A","address":"127.0.0.5"}]}]
 ```
 
-[![oss logo](http://nano-assets.gopagoda.io/open-src/nanobox-open-src.png)](http://nanobox.io/open-source)
+[![oss logo](http://microbox.rocks/assets/open-src/microbox-open-src.png)](http://microbox.cloud/open-source)
